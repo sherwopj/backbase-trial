@@ -1,0 +1,43 @@
+<div class="card border-0 mb-1">
+  <div class="card-header bg-primary text-white">
+    <span>
+      <i class="bi bi-wallet2" style="margin-right: 10px;"></i>
+      Make <b>Transfer</b></span>
+  </div>
+  <div class="card-block large-spacing">
+    <form [formGroup]="transferForm">
+      <fieldset disabled>
+        <div class="mb-3">
+          <label for="fromAccount" class="form-label">From Account</label>
+          <input formControlName="fromAccount" type="text" class="form-control" id="fromAccount"
+            aria-describedby="from account">
+        </div>
+      </fieldset>
+      <div class="mb-3">
+        <label for="toAccount" class="form-label">To Account</label>
+        <input formControlName="toAccount" type="text" class="form-control" id="toAccount"
+          aria-describedby="to account">
+      </div>
+
+      <label for="amount" class="form-label">Amount</label>
+      <div style="display: flex; flex-direction: column;">
+        <div class="input-group mb-3">
+          <span class="input-group-text">€</span>
+          <input formControlName="amount" type="text" class="form-control" id="amount" aria-describedby="to account">
+        </div>
+        <div class="error-message" *ngIf="transferForm.controls.amount.errors?.moreThan2DecimalPlaces">
+          Amount value can only have 2 decimal places
+        </div>
+        <div class="error-message" *ngIf="transferForm.controls.amount.errors?.mustBePositive">
+          Amount value must be positive
+        </div>
+        <div class="error-message" *ngIf="transferForm.controls.amount.errors?.amountIsMoreThan500">
+          Amount value must be at least €500
+        </div>
+      </div>
+      <div style="display: flex; justify-content: right; margin-top: 10px;">
+        <app-submit-button (submitForm)="submitForm()" [ngClass]="{'disabled':!transferForm.valid}"></app-submit-button>
+      </div>
+    </form>
+  </div>
+</div>
