@@ -15,26 +15,28 @@
           placeholder="filter transactions" aria-label="filter">
       </div>
     </form>
-    <div *ngFor="let transactionItem of (filteredTransactionItems$ | async)" style="display: flex;">
-      <app-transaction-item
-        style="display: flex; flex-direction: row; flex: 1; height: 80px; align-items: center; margin: 20px 0px; width: 100%;">
-        <div data-test-hook='transactionColour' [style.background-color]="transactionItem.categoryCode"
-          style="width: 8px; height: 100%; margin-right: 20px;"></div>
-        <div data-test-hook='transactionDate' style="margin-right: 30px;">{{ transactionItem.dates.valueDate | date }}
-        </div>
-        <div data-test-hook='transactionMerchantName' style="font-weight: 500;">{{ transactionItem.merchant.name }}
-        </div>
-        <div data-test-hook='transactionType'>{{ transactionItem.transaction.type }}</div>
-        <div data-test-hook='transactionAmount' style="margin-right: 20px;"
-          [ngClass]="{negative: transactionItem.transaction.creditDebitIndicator === 'DBIT', positive: transactionItem.transaction.creditDebitIndicator === 'CRDT'}">
-          <div style="display: flex;">€&nbsp;
-            <div [ngClass]="{negativeSign: transactionItem.transaction.creditDebitIndicator === 'DBIT'}">
-              {{ transactionItem.transaction.amountCurrency.amount | number : '1.2-2'}}
+    <div style="display: flex; flex: 1; flex-direction: column; overflow: auto;">
+      <div *ngFor="let transactionItem of (filteredTransactionItems$ | async)" style="display: flex;">
+        <app-transaction-item
+          style="display: flex; flex-direction: row; flex: 1; height: 80px; align-items: center; margin: 20px 0px; width: 100%;">
+          <div data-test-hook='transactionColour' [style.background-color]="transactionItem.categoryCode"
+            style="width: 8px; height: 100%; margin-right: 20px;"></div>
+          <div data-test-hook='transactionDate' style="margin-right: 30px;">{{ transactionItem.dates.valueDate | date }}
+          </div>
+          <div data-test-hook='transactionMerchantName' style="font-weight: 500;">{{ transactionItem.merchant.name }}
+          </div>
+          <div data-test-hook='transactionType'>{{ transactionItem.transaction.type }}</div>
+          <div data-test-hook='transactionAmount' style="margin-right: 20px;"
+            [ngClass]="{negative: transactionItem.transaction.creditDebitIndicator === 'DBIT', positive: transactionItem.transaction.creditDebitIndicator === 'CRDT'}">
+            <div style="display: flex;">€&nbsp;
+              <div [ngClass]="{negativeSign: transactionItem.transaction.creditDebitIndicator === 'DBIT'}">
+                {{ transactionItem.transaction.amountCurrency.amount | number : '1.2-2'}}
+              </div>
             </div>
           </div>
-        </div>
 
-      </app-transaction-item>
+        </app-transaction-item>
+      </div>
     </div>
   </div>
 </div>
