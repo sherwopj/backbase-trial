@@ -1,12 +1,12 @@
-<div style="display: flex; flex: 1; flex-direction: column; height: 100vh;">
-  <div class="header medium-spacing">
-    <div class="medium-spacing">
-      <app-logo></app-logo>
-    </div>
+<div class="top-level-container">
+  <div class="header">
+    <app-logo style="margin-left: 20px;"></app-logo>
     <div style="flex: 1;"></div>
-    <div class="header-title medium-spacing"><span>{{title}}</span></div>
+    <div class="header-title medium-spacing color-primary"><span>{{title}}</span></div>
   </div>
   <div class="body">
+    <div class="blur"></div>
+
     <router-outlet></router-outlet>
   </div>
   <div class="footer">

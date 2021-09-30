@@ -1,0 +1,40 @@
+<div class="card border-0" style="height: 100%;">
+  <div class="card-header text-white bg-color-primary"
+    style="height: 60px !important; display: flex; align-items: center;">
+    <i class="bi bi-list-ul large-icon" style="margin-right: 10px;"></i>
+    <span style="font-size: 16px;">
+
+      Transactions <span style="font-weight: 500;">List</span></span>
+  </div>
+  <div class="card-block large-spacing"
+    style="display: flex; flex: 1; flex-direction: column; overflow: auto; font-size: 20px;">
+    <form [formGroup]="filterForm" style="margin-top: 10px;">
+      <div class="input-group mb-3" style="width: 50%;">
+        <i class="input-group-text bi bi-search"></i>
+        <input formControlName="filterInput" type="text" class="form-control" id="filter"
+          placeholder="filter transactions" aria-label="filter">
+      </div>
+    </form>
+    <div *ngFor="let transactionItem of (filteredTransactionItems$ | async)" style="display: flex;">
+      <app-transaction-item
+        style="display: flex; flex-direction: row; flex: 1; height: 80px; align-items: center; margin: 20px 0px; width: 100%;">
+        <div data-test-hook='transactionColour' [style.background-color]="transactionItem.categoryCode"
+          style="width: 8px; height: 100%; margin-right: 20px;"></div>
+        <div data-test-hook='transactionDate' style="margin-right: 30px;">{{ transactionItem.dates.valueDate | date }}
+        </div>
+        <div data-test-hook='transactionMerchantName' style="font-weight: 500;">{{ transactionItem.merchant.name }}
+        </div>
+        <div data-test-hook='transactionType'>{{ transactionItem.transaction.type }}</div>
+        <div data-test-hook='transactionAmount' style="margin-right: 20px;"
+          [ngClass]="{negative: transactionItem.transaction.creditDebitIndicator === 'DBIT', positive: transactionItem.transaction.creditDebitIndicator === 'CRDT'}">
+          <div style="display: flex;">€&nbsp;
+            <div [ngClass]="{negativeSign: transactionItem.transaction.creditDebitIndicator === 'DBIT'}">
+              {{ transactionItem.transaction.amountCurrency.amount | number : '1.2-2'}}
+            </div>
+          </div>
+        </div>
+
+      </app-transaction-item>
+    </div>
+  </div>
+</div>

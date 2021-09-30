@@ -1,29 +1,30 @@
-<div class="card border-0 mb-1">
-  <div class="card-header bg-primary text-white">
-    <span>
-      <i class="bi bi-wallet2" style="margin-right: 10px;"></i>
-      Make <b>Transfer</b></span>
+<div class="card border-0">
+  <div class="card-header text-white bg-color-primary"
+    style="height: 60px !important; display: flex; align-items: center;">
+    <i class="bi bi-wallet2 large-icon" style="margin-right: 15px;"></i>
+    <span style="font-size: 16px;">
+      <span style="font-weight: 500;">Make</span> Transfer</span>
   </div>
   <div class="card-block large-spacing">
     <form [formGroup]="transferForm">
       <fieldset disabled>
         <div class="mb-3">
           <label for="fromAccount" class="form-label">From Account</label>
-          <input formControlName="fromAccount" type="text" class="form-control" id="fromAccount"
-            aria-describedby="from account">
+          <input formControlName="fromAccount" type="text" class="form-control" id="fromAccount" value="">
         </div>
       </fieldset>
       <div class="mb-3">
         <label for="toAccount" class="form-label">To Account</label>
         <input formControlName="toAccount" type="text" class="form-control" id="toAccount"
-          aria-describedby="to account">
+          placeholder="type an account name" aria-label="To Account">
       </div>
 
       <label for="amount" class="form-label">Amount</label>
       <div style="display: flex; flex-direction: column;">
         <div class="input-group mb-3">
           <span class="input-group-text">€</span>
-          <input formControlName="amount" type="text" class="form-control" id="amount" aria-describedby="to account">
+          <input formControlName="amount" type="number" class="form-control" id="amount"
+            placeholder="specify the amount" aria-label="amount">
         </div>
         <div class="error-message" *ngIf="transferForm.controls.amount.errors?.moreThan2DecimalPlaces">
           Amount value can only have 2 decimal places
@@ -31,8 +32,8 @@
         <div class="error-message" *ngIf="transferForm.controls.amount.errors?.mustBePositive">
           Amount value must be positive
         </div>
-        <div class="error-message" *ngIf="transferForm.controls.amount.errors?.amountIsMoreThan500">
-          Amount value must be at least €500
+        <div class="error-message" *ngIf="transferForm.controls.amount.errors?.balanceAcceptable">
+          Amount would drop balance below acceptable minimum: €-{{MINIMUM_BALANCE}}
         </div>
       </div>
       <div style="display: flex; justify-content: right; margin-top: 10px;">

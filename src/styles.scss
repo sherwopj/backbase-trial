@@ -2,12 +2,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-html, body {
-    min-height: 100vh;
-    height: auto;
-    margin: 0;
-  }
-
 .medium-spacing {
     margin: $medium-spacing;
 }
@@ -21,6 +15,27 @@ html, body {
     width: 100%;
 }
 
+.h-100 {
+    height: 100px;
+}
+
+.color-primary {
+    color: $primary-blue;
+}
+
+.bg-color-primary {
+    background-color: $primary-blue;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #DB6C36 !important;
+    border-color: #DB6C36 !important;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgb(219 108 54 / 50%);
+}
+
 .disabled
 {
   pointer-events: none;
@@ -31,4 +46,40 @@ html, body {
 
 .error-message {
     color: darkorange;
+}
+
+html, body { min-height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; height:100vh;}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+    font-size: 12px;
+}
+:-moz-placeholder {
+    font-style: italic;  
+    font-size: 12px;
+}
+::-moz-placeholder {
+    font-style: italic;  
+    font-size: 12px;
+}
+:-ms-input-placeholder {  
+    font-style: italic; 
+    font-size: 12px;
+ }
+
+.card {
+    border-radius: 1.25rem;
+}
+
+ .card-header {
+    border-radius: 1.25rem 1.25rem 0 0 !important;
+}
+
+.large-icon{
+    font-size: 30px;
+}
+
+.merchant-details {
+    flex: 1;
 }
