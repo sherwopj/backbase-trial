@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,13 +31,12 @@ import { ConfirmTransactionDialogComponent } from './components/make-transfer/co
     HttpClientModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
     BrowserAnimationsModule,
-    BbUIModule
+    BbUIModule,
   ],
-  providers: [
-    LoggedInGuard,
-    TransactionService
-  ],
-  bootstrap: [AppComponent]
+  providers: [LoggedInGuard, TransactionService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

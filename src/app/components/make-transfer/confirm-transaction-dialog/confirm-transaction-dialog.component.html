@@ -1,9 +1,21 @@
 <div style="font-size: 16px; height: 100%; display: flex; flex-direction: column;">
-  <h2 mat-dialog-title>Confirm Transfer</h2>
-  <mat-dialog-content style="display:flex; flex: 1; flex-direction: column; justify-content: space-around;">
-    <span>Transfering: <b>€{{data.transaction.amountCurrency.amount}}</b></span>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
 
-    <span>To: <b>{{data.merchant.name}}</b></span>
+    <h2 mat-dialog-title>Review Transfer</h2>
+    <button mat-icon-button mat-dialog-close aria-label="Close button" style="margin-bottom: 20px;">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-dialog-content style="display:flex; flex: 1; flex-direction: column; justify-content: space-around;">
+    <span style="font-style: italic;">Are you ready to send out this transfer?</span>
+    <div style="display:flex; flex-direction: column;">
+      <span><b>It will be sent to account:</b></span>
+      <span>{{data.merchant.name}}</span>
+    </div>
+    <div style="display:flex; flex-direction: column;">
+      <span><b>With the amount of:</b></span>
+      <span>€{{data.transaction.amountCurrency.amount}}</span>
+    </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button class="btn btn-secondary medium-spacing" mat-dialog-close>Cancel</button>

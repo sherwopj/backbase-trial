@@ -83,8 +83,8 @@ export class MakeTransferComponent implements OnInit {
       {
         data: newTransfer,
         autoFocus: true,
-        height: '200px',
-        width: '300px',
+        height: '400px',
+        width: '500px',
       }
     );
 
